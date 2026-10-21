@@ -1,0 +1,1493 @@
+FULL MASTER PROMPT
+
+Multi-Vendor Digital Store & Marketplace — Google AI Studio Edition
+
+MongoDB Atlas + Next.js + TypeScript + GitHub + Vercel
+
+1. PROJECT OBJECTIVE
+
+Build a complete, secure, responsive, production-oriented Multi-Vendor Digital Store and Marketplace primarily serving Nepal.
+
+Generate the actual working application source code, not merely a UI design, mockup, prototype, or implementation plan.
+
+The platform must support customers, vendors, Super Admin, and specialized administrative staff with separate dashboards, permissions, workflows, and database-backed functionality.
+
+The finished project must be structured for:
+
+* Development and code generation using Google AI Studio.
+* Source code management using GitHub.
+* Production hosting using Vercel.
+* Persistent database storage using MongoDB Atlas.
+* Secure file storage using a compatible private object storage provider.
+* Future integration of Nepal-supported payment gateways.
+
+Business Configuration
+
+* Primary market: Nepal.
+* Currency: NPR / Rs.
+* Time zone: Asia/Kathmandu.
+* Primary language: English.
+* Architecture: Responsive full-stack web application.
+* Business model: Multi-vendor digital marketplace.
+* Initial payment mode: Manual payment verification.
+* Initial delivery mode: Manual fulfillment only.
+* Database: MongoDB Atlas.
+* ODM: Mongoose.
+* Hosting: Vercel.
+* Repository: GitHub.
+* Development environment: Google AI Studio, with source code export and GitHub compatibility.
+
+Do not use PostgreSQL, MySQL, SQLite, Prisma, or any SQL-based database as the application’s primary database.
+
+Use MongoDB and Mongoose throughout the application.
+
+Do not replace real database operations with localStorage, static JSON arrays, mock API responses, or hardcoded production data.
+
+2. GOOGLE AI STUDIO DEVELOPMENT INSTRUCTIONS
+
+Before implementation:
+
+1. Inspect the current project and its existing source files.
+2. Identify the framework, dependencies, components, existing functionality, and current project structure.
+3. Preserve existing working functionality unless a change is necessary.
+4. If the project is new, initialize a clean, maintainable Next.js project.
+5. Create an implementation checklist covering every module in this specification.
+6. Implement the complete application in logical phases.
+7. Continue implementing after the planning phase. Do not stop at a design, plan, or basic dashboard.
+
+Mandatory Coding Rules
+
+* Generate actual source files with complete implementations.
+* Use reusable components, shared validation schemas, service layers, and consistent error handling.
+* Implement functional forms, buttons, navigation, tables, filters, dialogs, and status workflows.
+* Connect all applicable screens to real MongoDB-backed APIs.
+* Implement server-side validation and authorization.
+* Avoid duplicated code and unnecessary dependencies.
+* Do not generate fake transactions, fake customers, fake payment approvals, or simulated successful API responses.
+* Do not create dead buttons or nonfunctional dashboard modules.
+* Do not leave TODO placeholders for core business features.
+* Do not claim that code has been tested unless it has actually been executed and tested.
+* If the complete application cannot fit in a single generation, divide implementation into ordered phases and continue creating the remaining files without discarding previously completed work.
+* Maintain a project progress checklist and report completed, partial, and unimplemented features honestly.
+
+Google AI Studio Compatibility
+
+Generate a standard, portable web application that can be downloaded or synchronized to GitHub and deployed independently of Google AI Studio.
+
+Do not make the production application dependent on an AI Studio-only runtime, temporary preview server, or hidden development environment.
+
+Use standard Node.js-compatible server-side functionality supported by Vercel.
+
+If Google AI Studio cannot generate or edit every file in one operation, implement the application module by module while maintaining a consistent architecture.
+
+3. REQUIRED TECHNOLOGY STACK
+
+Use the following stack unless an existing compatible project already has a justified implementation.
+
+Frontend
+
+* Next.js with App Router.
+* React.
+* TypeScript with strict mode.
+* Tailwind CSS.
+* Accessible reusable UI components.
+* Lucide icons.
+* React Hook Form.
+* Zod for validation.
+* A maintained notification/toast library.
+
+Backend
+
+* Next.js server-side Route Handlers.
+* Server Components where appropriate.
+* Server Actions only where suitable and properly protected.
+* Dedicated server-side service modules for business logic.
+* Mongoose for MongoDB models and queries.
+* Secure authentication and session management.
+* Zod validation on all untrusted inputs.
+
+Database
+
+* MongoDB Atlas.
+* Mongoose schemas and models.
+* MongoDB indexes and unique constraints.
+* MongoDB transactions for critical multi-document workflows where supported.
+* Atomic updates and conditional writes for concurrent operations.
+* Database-backed audit history and financial ledgers.
+
+MongoDB transactions require a supported replica-set or sharded deployment. Document these requirements and do not silently fall back to unsafe multi-document operations.
+
+External Services
+
+Design configurable integrations for:
+
+* Private object storage for identity documents, payment receipts, and fulfillment evidence.
+* Email delivery.
+* Optional SMS or OTP verification.
+* Optional future payment gateways.
+* Optional error monitoring and operational logging.
+
+Use actual provider integrations only when credentials and configuration are supplied.
+
+Deployment
+
+* GitHub for source control.
+* Vercel for application hosting.
+* MongoDB Atlas for the database.
+* A private S3-compatible object storage service or equivalent for sensitive files.
+
+Never use the Vercel application filesystem as permanent file storage.
+
+Never store uploaded identity documents or payment evidence in a public directory.
+
+4. PROJECT STRUCTURE
+
+Organize the application into clear modules, for example:
+
+* app/
+    * Public storefront routes.
+    * Authentication routes.
+    * Customer dashboard.
+    * Vendor dashboard.
+    * Super Admin dashboard.
+    * Specialized admin dashboards.
+    * Secure API routes.
+* components/
+    * Common UI.
+    * Storefront.
+    * Customer.
+    * Vendor.
+    * Administration.
+    * Forms.
+    * Tables.
+    * Notifications.
+* lib/
+    * MongoDB connection.
+    * Authentication.
+    * Authorization.
+    * Validation.
+    * Rate limiting.
+    * File storage.
+    * Email service.
+    * Logging.
+    * Monetary calculations.
+* models/
+    * Mongoose schemas.
+* services/
+    * Orders.
+    * Payments.
+    * Fulfillment.
+    * KYC.
+    * Vendors.
+    * Products.
+    * Finance.
+    * Refunds.
+    * Promotions.
+    * Notifications.
+* config/
+    * Centralized branding.
+    * Application configuration.
+    * Permissions.
+* tests/
+    * Unit tests.
+    * Integration tests.
+    * Authorization tests.
+* scripts/
+    * Secure Super Admin bootstrap.
+    * Maintenance and operational scripts.
+* public/
+    * Only non-sensitive static assets.
+* documentation/
+    * Setup.
+    * Deployment.
+    * Security.
+    * Permissions.
+    * Database operations.
+
+Adjust this structure where necessary, but preserve clear boundaries between public pages, privileged pages, API endpoints, database models, and business logic.
+
+5. MONGODB ATLAS DATABASE REQUIREMENTS
+
+Create Mongoose models and appropriate relationships for:
+
+* Users.
+* User Profiles.
+* Authentication Sessions.
+* Roles.
+* Permissions.
+* User Roles.
+* Vendors.
+* Vendor Applications.
+* Vendor Members.
+* Vendor Documents.
+* KYC Applications.
+* KYC Documents.
+* Categories.
+* Products.
+* Product Variants.
+* Product Approval History.
+* Product Inventory.
+* Parent Orders.
+* Vendor Orders.
+* Order Items.
+* Payment Methods.
+* Payments.
+* Payment Evidence.
+* Fulfillment Records.
+* Refund Requests.
+* Promotions.
+* Promotion Redemptions.
+* Vendor Commission Rules.
+* Financial Ledger Entries.
+* Vendor Settlement Requests.
+* Support Tickets.
+* Support Messages.
+* Notifications.
+* Audit Logs.
+* Site Settings.
+* Content Pages.
+* Login History.
+* Administrative Invitations.
+
+Database Rules
+
+1. Use Mongoose schemas with explicit field types and validation.
+2. Create indexes for commonly searched fields.
+3. Enforce unique email addresses, order numbers, and other identifiers where appropriate.
+4. Use unique indexes and carefully designed normalized identifiers to prevent duplicate payment-reference acceptance.
+5. Store timestamps consistently and display dates in the Asia/Kathmandu time zone.
+6. Use ObjectId references where relationships are appropriate.
+7. Store order-item price and product information as immutable purchase-time snapshots.
+8. Use Decimal128 or integer minor units for monetary values. Never use JavaScript floating-point arithmetic for financial calculations.
+9. Validate monetary values and perform all financial calculations on the server.
+10. Use database transactions and conditional updates for payment approval, inventory reservation, order completion, refunds, and settlements where required.
+11. Design operations to be idempotent where repeated requests could cause financial or fulfillment errors.
+12. Keep financial records and important historical records even when related accounts or products are deactivated.
+13. Apply documented retention policies to personal and sensitive information.
+14. Never return private documents, password hashes, session tokens, or secret delivery codes through ordinary API responses.
+15. Never expose the MongoDB connection string to client-side code.
+
+MongoDB Connection
+
+Create a reusable server-only MongoDB connection module.
+
+* Read MONGODB_URI from server-side environment variables.
+* Cache the connection appropriately for Vercel serverless execution.
+* Handle concurrent connection initialization safely.
+* Avoid opening unnecessary database connections on every request.
+* Provide clear connection errors without exposing secrets.
+* Include development and production configuration instructions.
+
+Do not place the database connection string in NEXT_PUBLIC variables.
+
+6. BRANDING AND DESIGN
+
+Create a centralized branding configuration containing:
+
+* Marketplace name.
+* Logo and favicon.
+* Brand colors.
+* Contact email.
+* Support phone.
+* Address.
+* Social media links.
+* Promotional banner configuration.
+* Footer information.
+* Legal page content.
+
+Do not hardcode branding throughout the codebase.
+
+Create a premium, modern, mobile-first marketplace suitable for Nepal.
+
+Use consistent typography, spacing, icons, product cards, forms, navigation, tables, status indicators, and confirmation dialogs.
+
+Support mobile, tablet, laptop, and desktop layouts.
+
+Include accessible contrast, keyboard navigation, loading indicators, validation messages, empty states, and error notifications.
+
+Add light and dark themes where practical.
+
+Do not use fake customer reviews, invented payment confirmations, or misleading trust badges.
+
+7. PUBLIC STOREFRONT
+
+Build these pages:
+
+* Home.
+* All Products.
+* Categories and Subcategories.
+* Product Details.
+* Vendor Storefront.
+* Search Results.
+* Offers and Promotions.
+* About Us.
+* Contact Us.
+* FAQ.
+* How to Order.
+* Payment Instructions.
+* Terms and Conditions.
+* Privacy Policy.
+* Refund and Cancellation Policy.
+* Vendor Terms and Conditions.
+* Login.
+* Registration.
+* Email Verification.
+* Password Recovery.
+* Password Reset.
+
+The homepage must include:
+
+* Search bar.
+* Promotional banner.
+* Featured categories.
+* Popular digital products.
+* Featured approved vendors.
+* Special offers.
+* Recently added products.
+* Customer support section.
+* Footer and legal links.
+
+Only approved products from eligible, active vendors may be publicly purchasable.
+
+Implement server-side search, category filters, sorting, pagination, and product detail loading.
+
+8. PRODUCT CATEGORIES
+
+Create administrator-configurable categories and subcategories.
+
+Initial categories:
+
+Gaming Top-Ups
+
+* Free Fire Diamonds.
+* PUBG Mobile UC.
+* Other authorized game currencies.
+* Game vouchers.
+
+Gift Cards and Digital Codes
+
+* Authorized gift cards.
+* Game vouchers.
+* Redeemable codes.
+* Promotional codes.
+* Digital licenses.
+
+Software and Subscriptions
+
+* Eligible Canva subscriptions.
+* Eligible Google subscriptions.
+* Authorized productivity software.
+* AI subscriptions.
+* Other lawful software products.
+
+Recharge Services
+
+* Nepal Telecom recharge.
+* Ncell recharge.
+* Supported prepaid and data packages.
+* Other approved recharge services.
+
+Other Digital Products
+
+* E-books.
+* Digital files.
+* Authorized software licenses.
+* Other approved digital goods.
+
+Require vendors to confirm that they are authorized to resell the applicable products. Allow staff to request evidence and reject unauthorized products.
+
+Do not support stolen accounts, counterfeit codes, stolen payment methods, unauthorized account sharing, or products that violate applicable laws or provider terms.
+
+9. CUSTOMER AUTHENTICATION AND SECURITY
+
+Implement:
+
+* Registration.
+* Login and logout.
+* Email verification.
+* Password reset.
+* Secure session management.
+* Account profile.
+* Password changes.
+* Active session management.
+* Login history.
+* Notification preferences.
+* Optional mobile verification.
+
+Use an established authentication library compatible with the selected Next.js version and MongoDB.
+
+Requirements:
+
+* Secure password hashing using an established algorithm.
+* HTTP-only, Secure-in-production, appropriately configured SameSite cookies.
+* Server-side session validation.
+* Session expiration and revocation.
+* Login rate limiting.
+* Protection against brute-force attempts.
+* Secure password reset tokens with expiration and one-time use.
+* CSRF protection where applicable.
+* Secure handling of redirects and callback URLs.
+* Multi-factor authentication for privileged administrators where supported.
+
+Do not implement authentication as a frontend-only state variable.
+
+Customers must only access their own private account, payment, order, and support records.
+
+10. CUSTOMER DASHBOARD
+
+Build a functional dashboard with:
+
+* Account Overview.
+* KYC Status.
+* My Orders.
+* Order Details.
+* My Payments.
+* Payment Instructions.
+* Payment Proof Upload.
+* My Digital Purchases.
+* Manual Delivery Status.
+* My Promo Codes.
+* Saved Products.
+* Support Tickets.
+* Refund Requests.
+* Notifications.
+* Account Settings.
+* Login History.
+
+Connect each feature to authenticated server-side operations and real MongoDB data.
+
+11. MULTI-VENDOR SYSTEM
+
+Create a complete vendor application and management system.
+
+Vendor Registration
+
+Collect:
+
+* Full name.
+* Email.
+* Mobile number with country code.
+* Business or shop name.
+* Country and address.
+* Business registration details where applicable.
+* Required verification documents.
+* Product categories.
+* Vendor agreement acceptance.
+
+Vendor statuses:
+
+* Draft.
+* Pending Review.
+* Under Review.
+* Approved.
+* Rejected.
+* Suspended.
+* Deactivated.
+
+Only approved vendors can use authorized selling functions.
+
+Vendor Dashboard
+
+Include:
+
+* Overview.
+* Store Profile.
+* Product Management.
+* Product Submission.
+* Product Approval Status.
+* Assigned Orders.
+* Manual Fulfillment.
+* Sales History.
+* Earnings Ledger.
+* Commission Breakdown.
+* Refund and Dispute Records.
+* Support Tickets.
+* Notifications.
+* Vendor Settings.
+
+Vendor Product Management
+
+Product fields must include:
+
+* Product name.
+* Category and subcategory.
+* Description.
+* Images.
+* Selling price in NPR.
+* Optional sourcing cost with restricted visibility.
+* Product variants.
+* Packages.
+* Expected fulfillment time.
+* Required customer information.
+* Stock availability.
+* Region restrictions.
+* Product terms.
+* Refund eligibility.
+* Authorization evidence where necessary.
+
+Products must be submitted for staff approval before publication.
+
+Record product changes, approval decisions, rejection reasons, and suspension events.
+
+Vendors must never modify products or orders belonging to another vendor.
+
+12. SUPER ADMIN DASHBOARD
+
+Create a database-backed Super Admin dashboard showing:
+
+* Total registered customers.
+* Pending customer KYC applications.
+* Total vendors.
+* Pending vendor approvals.
+* Active products.
+* Pending product approvals.
+* Total orders.
+* Payments awaiting review.
+* Orders awaiting fulfillment.
+* Completed and cancelled orders.
+* Refund requests.
+* Gross sales.
+* Discounts and refunds.
+* Marketplace commissions.
+* Outstanding vendor settlements.
+* Payment reconciliation exceptions.
+* Support ticket statistics.
+
+Do not hardcode production statistics.
+
+Super Admin Capabilities
+
+* Create and manage administrators.
+* Assign roles and granular permissions.
+* Create custom roles.
+* Manage customers and vendors.
+* Approve and suspend products.
+* Configure marketplace commissions.
+* Configure manual payment methods.
+* Manage orders and fulfillment.
+* Manage refunds and disputes.
+* Manage promotions.
+* Review reports.
+* Configure site branding.
+* Manage content pages.
+* Configure notification templates.
+* Access audit logs.
+* Configure platform policies.
+
+Protect critical security settings against unauthorized modifications.
+
+Do not provide a normal administrator with unrestricted access merely because they can open the admin dashboard.
+
+13. ROLE-BASED ACCESS CONTROL (RBAC)
+
+Implement genuine server-enforced RBAC.
+
+Initial roles:
+
+1. Super Admin.
+2. Customer Support Admin.
+3. Customer Verification / KYC Admin.
+4. Vendor Verification Admin.
+5. Payment Verification Admin.
+6. Product Management Admin.
+7. Order and Fulfillment Admin.
+8. Promotions Admin.
+9. Finance and Settlement Admin.
+10. Reports Admin.
+11. Content Management Admin.
+12. Security and Audit Admin.
+
+Allow Super Admin to create custom roles and assign multiple roles when appropriate.
+
+Granular Permissions
+
+Support permissions for:
+
+* View.
+* Create.
+* Edit.
+* Approve.
+* Reject.
+* Suspend.
+* Export.
+* Refund.
+* Delete, where appropriate.
+* Manage permissions.
+
+Enforce permissions at the API, service, and database-access boundaries.
+
+Hiding a button is not authorization.
+
+Examples:
+
+* Support Admin cannot approve payments without explicit permission.
+* KYC Admin cannot modify payment settings.
+* Payment Admin cannot modify Super Admin permissions.
+* Product Admin cannot approve vendor settlements unless separately authorized.
+* Finance Admin must not automatically receive access to identity documents.
+* Vendors cannot access another vendor’s records.
+* Customers cannot access other customers’ private information.
+
+Prevent privilege escalation, self-assigned privileges, unauthorized role changes, and last-Super-Admin lockout.
+
+Require reasons for sensitive administrative decisions where appropriate.
+
+14. KYC VERIFICATION
+
+Create a configurable KYC workflow.
+
+Collect only necessary information:
+
+* Legal name.
+* Date of birth where required.
+* Country.
+* Address where required.
+* Identity document type.
+* Document number where required.
+* Document images.
+* Additional legally justified information.
+
+Allow configuration of acceptable Nepal identity documents, including citizenship documentation where appropriate.
+
+KYC statuses:
+
+* Not Started.
+* Draft.
+* Submitted.
+* Under Review.
+* More Information Required.
+* Approved.
+* Rejected.
+* Expired.
+* Resubmission Required.
+
+KYC Admin Tools
+
+* Pending verification queue.
+* Application details.
+* Secure document viewer.
+* Reviewer assignment.
+* Review notes.
+* Request additional information.
+* Approve or reject.
+* Mandatory rejection reason.
+* Review timestamps.
+* Decision history.
+
+Notify customers about status changes.
+
+Document Security
+
+* Use private object storage.
+* Use short-lived authorized download links.
+* Prevent public document access.
+* Restrict document access by role and purpose.
+* Record sensitive document access where practical.
+* Never log full identity numbers or document contents.
+* Apply retention and deletion policies.
+* Restrict exports.
+
+Do not claim automated identity verification unless a real verification provider has been integrated and configured.
+
+Do not require KYC for every purchase by default. Configure requirements according to applicable laws, product risk, and platform policy.
+
+15. MANUAL PAYMENT SYSTEM
+
+Manual payment verification is mandatory for the initial release.
+
+Configurable Payment Methods
+
+Support:
+
+* Bank transfer.
+* QR-based payments.
+* Supported digital wallets.
+* Other approved Nepal payment methods.
+
+Each payment method must support:
+
+* Display name.
+* Payment instructions.
+* Account or merchant details.
+* QR image where applicable.
+* Enabled or disabled status.
+* Minimum and maximum amount.
+* Supported currency.
+* Additional instructions.
+
+Protect private configuration and credentials.
+
+Customer Payment Workflow
+
+1. Customer places an order.
+2. Server creates a unique order number and payment record.
+3. Customer sees payment instructions.
+4. Customer transfers the required amount.
+5. Customer submits a transaction reference and payment evidence.
+6. Payment enters the review queue.
+7. Payment Admin checks the actual transaction against an authoritative bank, wallet, or merchant record.
+8. Payment Admin approves or rejects with a reason.
+9. An approved payment enables authorized fulfillment.
+10. Customer receives an appropriate notification.
+
+Payment statuses:
+
+* Unpaid.
+* Payment Submitted.
+* Under Review.
+* Approved.
+* Rejected.
+* Expired.
+* Refund Requested.
+* Refund Approved.
+* Refund Processing.
+* Refunded.
+
+Payment Security
+
+* Never trust a screenshot alone as confirmation of payment.
+* Do not simulate bank or wallet verification.
+* Prevent inappropriate duplicate payment-reference use.
+* Calculate expected amounts on the server.
+* Prevent customers from editing approved payment records.
+* Require additional authorization for refunds and sensitive financial actions.
+* Keep payment, order, and fulfillment statuses separate.
+* Prevent repeated approvals from creating duplicate ledger entries.
+* Use idempotency and atomic conditional updates for critical actions.
+
+16. FUTURE PAYMENT GATEWAYS
+
+Design a provider-independent payment architecture.
+
+Provide a documented interface for future payment providers.
+
+Support future capabilities for:
+
+* Payment initiation.
+* Server-side status verification.
+* Authenticated and signed webhooks.
+* Idempotency.
+* Reconciliation.
+* Refund requests.
+* Timeouts.
+* Provider errors.
+
+Never mark an order paid because the browser reaches a success page.
+
+Only verified server-side responses or authenticated provider notifications may confirm a gateway payment.
+
+Keep manual payment available even after gateway integration.
+
+Do not claim a payment gateway is integrated or tested unless it actually is.
+
+17. ORDER MANAGEMENT
+
+Create a unified order system for every category and vendor.
+
+Every order must include:
+
+* Unique order ID.
+* Customer ID.
+* Vendor association where applicable.
+* Product and variant snapshots.
+* Quantity.
+* Item price.
+* Discount.
+* Applicable fees and taxes.
+* Final NPR amount.
+* Payment association.
+* Fulfillment information.
+* Order timeline.
+* Cancellation eligibility.
+* Refund status.
+
+Support parent checkout records and separate vendor order groups for multi-vendor purchases.
+
+Statuses:
+
+* Pending Payment.
+* Payment Under Review.
+* Paid.
+* Processing.
+* Awaiting Fulfillment.
+* Partially Fulfilled.
+* Delivered.
+* Completed.
+* Cancellation Requested.
+* Cancelled.
+* Refund Requested.
+* Refunded.
+* Disputed.
+
+Implement validated status transitions.
+
+Do not permit arbitrary status changes that bypass payment checks or required approvals.
+
+Use purchase-time snapshots so later product edits do not alter historical orders.
+
+18. MANUAL FULFILLMENT
+
+All delivery must be manual at launch.
+
+Do not automatically recharge numbers, activate subscriptions, deliver codes through external APIs, or trigger automatic digital fulfillment.
+
+Fulfillment Workflow
+
+1. Payment is verified.
+2. Order becomes eligible for fulfillment.
+3. Authorized staff or an appropriately authorized vendor reviews the order.
+4. Delivery is performed through an authorized external process.
+5. Fulfillment notes and a reference are recorded.
+6. Staff records appropriate evidence when necessary.
+7. The item is marked delivered.
+8. Customer receives a notification.
+9. Customer can confirm receipt or report a problem.
+10. Order completes according to the configured policy.
+
+Include:
+
+* Assignment.
+* Pending fulfillment queue.
+* Customer delivery instructions.
+* Internal notes.
+* Delivery reference.
+* Evidence.
+* Delivery timestamp.
+* Failure reason.
+* Communication history.
+* Escalation and dispute workflow.
+
+Support game top-ups, recharge products, gift cards, software licenses, subscriptions, and other approved digital goods.
+
+Secret Delivery Data
+
+* Restrict access to secret codes and license keys.
+* Encrypt sensitive delivery data at rest where appropriate.
+* Never show full secret codes in ordinary tables, logs, analytics, or notification emails.
+* Restrict retrieval to authorized personnel and the intended customer.
+* Record delivery and access events.
+* Prevent duplicate allocation and delivery.
+* Never request customer account passwords or OTPs.
+
+19. PROMOTIONS AND DISCOUNTS
+
+Implement:
+
+* Percentage discounts.
+* Fixed-amount discounts.
+* First-order discounts.
+* Product-specific offers.
+* Category-specific offers.
+* Vendor-specific offers.
+* Minimum order amount.
+* Maximum discount.
+* User-specific campaigns.
+* Start and expiration dates.
+* Total usage limits.
+* Per-customer usage limits.
+* Customer eligibility rules.
+* Vendor participation settings.
+
+Validate discounts on the server.
+
+Prevent concurrent over-redemption, self-referral abuse, duplicate redemptions, and invalid discount amounts.
+
+Record promotion creation and changes.
+
+20. DIGITAL CODE INVENTORY
+
+Create an optional secure inventory module for authorized gift cards, vouchers, and licenses.
+
+Include:
+
+* Product association.
+* Vendor association.
+* Protected code or license reference.
+* Inventory status.
+* Purchase date.
+* Expiry date where relevant.
+* Reservation status.
+* Delivery association.
+* Activation notes.
+
+Initial delivery remains manual.
+
+Restrict access to secrets and prevent duplicate allocation.
+
+Never import or sell codes without appropriate authorization.
+
+21. GAMING AND RECHARGE FORMS
+
+Create configurable customer information fields per product category.
+
+Examples:
+
+* Game UID.
+* Player ID.
+* Server or region.
+* Telecom number.
+* Operator.
+* Recharge package.
+* Subscription plan.
+* Customer reference.
+
+Do not require irrelevant fields for every product.
+
+Display a confirmation screen for critical identifiers before checkout.
+
+Staff must verify supplied details before fulfillment.
+
+Record references and outcomes.
+
+Provide escalation and refund review for incorrect IDs or failed fulfillment.
+
+22. FINANCE, COMMISSIONS AND SETTLEMENTS
+
+Create an auditable financial ledger.
+
+Track:
+
+* Verified customer payments.
+* Order gross amounts.
+* Discounts.
+* Marketplace commissions.
+* Vendor earnings.
+* Refunds.
+* Chargebacks where applicable.
+* Settlement deductions.
+* Settlement requests.
+* Completed payouts.
+
+Allow Super Admin to configure:
+
+* Global commission.
+* Vendor-specific commission.
+* Category-specific commission.
+* Product-specific commission where appropriate.
+* Settlement schedules.
+* Minimum payout amount.
+* Refund deductions.
+
+Do not permit vendors to edit balances.
+
+Pending earnings become available only after the configured order completion and review conditions are met.
+
+Settlement statuses:
+
+* Pending Earnings.
+* Available Earnings.
+* Settlement Requested.
+* Settlement Under Review.
+* Settlement Approved.
+* Settlement Paid.
+* Settlement Rejected.
+
+Finance staff may process payouts manually when authorized.
+
+Record payout reference, evidence, timestamps, and reviewer.
+
+Require a documented adjustment workflow for financial corrections.
+
+23. REFUNDS AND DISPUTES
+
+Build a refund request workflow containing:
+
+* Order selection.
+* Request reason.
+* Supporting evidence.
+* Review status.
+* Assigned reviewer.
+* Decision reason.
+* Approved refund amount.
+* Refund reference.
+* Completion date.
+
+Statuses:
+
+* Requested.
+* Under Review.
+* More Information Required.
+* Approved.
+* Rejected.
+* Processing.
+* Completed.
+
+Provide clear refund terms before checkout.
+
+Apply product-specific policies consistent with applicable consumer protection rules.
+
+Do not automatically classify every delivered digital product as non-refundable.
+
+Require authorization for financial reversals and notify affected customers and vendors.
+
+24. CUSTOMER SUPPORT
+
+Create a ticket-based support system.
+
+Features:
+
+* Ticket creation.
+* Categories.
+* Order association.
+* Priority.
+* Attachments.
+* Staff assignment.
+* Internal notes.
+* Customer-visible replies.
+* Status changes.
+* Escalation.
+* Resolution summary.
+* Complete conversation history.
+
+Support staff must not automatically receive access to KYC documents, payment credentials, secret codes, or security settings.
+
+25. NOTIFICATIONS
+
+Implement in-app and email notifications for:
+
+* Registration and verification.
+* KYC submission and decisions.
+* Vendor approval and rejection.
+* Product approval.
+* Order placement.
+* Payment submission.
+* Payment approval or rejection.
+* Fulfillment updates.
+* Refund decisions.
+* Settlement updates.
+* Support replies.
+* Permitted promotional announcements.
+
+Provide editable notification templates with validated placeholders.
+
+Use a real email provider configured through server-side environment variables.
+
+If email is not configured, display an explicit delivery status. Never claim an email was sent when it was not.
+
+Avoid putting sensitive identity information, payment credentials, or secret delivery codes in emails.
+
+26. REPORTS AND ANALYTICS
+
+Create authorized, date-filtered reports for:
+
+* Sales.
+* Order statuses.
+* Payment reconciliation.
+* Vendor sales.
+* Vendor commissions.
+* Vendor settlements.
+* Product performance.
+* Promotion usage.
+* Refunds and disputes.
+* KYC processing.
+* Support performance.
+* Administrative activity.
+
+Distinguish:
+
+* Gross sales.
+* Discounts.
+* Refunds.
+* Net sales.
+* Marketplace revenue.
+* Vendor earnings.
+* Outstanding liabilities.
+* Operating expenses.
+* Actual profit.
+
+Do not label gross sales as profit.
+
+Use database-backed values and correct monetary calculations.
+
+Restrict exports by permission and log sensitive export activity.
+
+Use server-side pagination and limits for large datasets.
+
+27. AUDIT LOGS
+
+Create searchable administrative audit logs.
+
+Record:
+
+* Administrator creation.
+* Role and permission changes.
+* Login failures and suspicious activity.
+* Customer and vendor suspensions.
+* KYC decisions.
+* Product approvals.
+* Price changes.
+* Payment decisions.
+* Refund decisions.
+* Fulfillment actions.
+* Settlement decisions.
+* Configuration changes.
+* Sensitive document access where practical.
+
+Each event should include:
+
+* Event ID.
+* Actor ID.
+* Actor role at the time.
+* Action type.
+* Affected record type and ID.
+* Timestamp.
+* Relevant before-and-after values.
+* Reason or reference.
+* Request or correlation ID.
+
+Ordinary administrators must not edit or delete audit records.
+
+Never store passwords, authentication tokens, full identity documents, or unnecessary sensitive data in audit logs.
+
+28. FILE STORAGE
+
+Because Vercel’s application filesystem is not persistent storage, implement a dedicated file-storage abstraction.
+
+Support an S3-compatible private object storage provider or another suitable provider.
+
+Use it for:
+
+* KYC documents.
+* Payment receipts.
+* Fulfillment evidence.
+* Support attachments.
+* Product images, using suitable public or private access according to their purpose.
+
+Requirements:
+
+* Validate file type and actual file content.
+* Enforce file-size limits.
+* Generate safe storage keys.
+* Prevent path traversal.
+* Prevent unauthorized file access.
+* Use short-lived signed upload or download URLs where appropriate.
+* Apply role-based authorization before issuing URLs.
+* Store file metadata in MongoDB, not file contents in ordinary database fields.
+* Use private storage for sensitive files.
+* Do not trust the original filename or browser-supplied MIME type alone.
+
+If storage credentials are missing, implement the interface and configuration instructions without falsely claiming uploads work in production.
+
+29. SECURITY HARDENING
+
+Implement:
+
+* Secure password hashing.
+* Server-side authentication.
+* Server-enforced RBAC.
+* Secure session handling.
+* CSRF protection where applicable.
+* Input validation.
+* Output encoding.
+* SQL injection prevention is not applicable to MongoDB, but NoSQL injection prevention is mandatory.
+* XSS prevention.
+* Rate limiting.
+* Login throttling.
+* Secure password reset.
+* Email verification.
+* MFA for privileged administrators where supported.
+* Secure file uploads.
+* Secure HTTP headers.
+* Environment-based secrets.
+* Production HTTPS.
+* Database network and credential restrictions.
+* Dependency vulnerability checks.
+* Audit logging.
+* Secure error handling.
+* Backup and restoration procedures.
+
+MongoDB-Specific Security
+
+* Never pass unvalidated user-supplied objects directly into MongoDB queries.
+* Never accept arbitrary query operators from clients.
+* Use explicit query filters and allowlisted fields.
+* Prevent unauthorized mass assignment.
+* Validate ObjectIds and record ownership.
+* Avoid exposing internal database errors.
+* Apply least-privilege database credentials.
+* Keep MongoDB Atlas access appropriately restricted.
+* Never disable database authentication or network restrictions for convenience.
+
+Vercel-Specific Security
+
+* Keep secrets in Vercel server-side environment variables.
+* Never expose secret variables through NEXT_PUBLIC_.
+* Do not store sessions, payments, or permanent files only in process memory or local filesystem.
+* Ensure privileged routes execute server-side.
+* Do not rely on middleware alone for final authorization.
+* Recheck permissions in every sensitive API and service operation.
+* Use a durable shared rate-limiting mechanism where required; do not rely solely on in-memory counters across serverless instances.
+
+30. ENVIRONMENT VARIABLES
+
+Generate a complete .env.example containing placeholders only, such as:
+
+MONGODB_URI=
+AUTH_SECRET=
+APP_URL=
+EMAIL_PROVIDER_API_KEY=
+EMAIL_FROM=
+OBJECT_STORAGE_ENDPOINT=
+OBJECT_STORAGE_REGION=
+OBJECT_STORAGE_BUCKET=
+OBJECT_STORAGE_ACCESS_KEY_ID=
+OBJECT_STORAGE_SECRET_ACCESS_KEY=
+OBJECT_STORAGE_PUBLIC_BASE_URL=
+RATE_LIMIT_STORE_URL=
+RATE_LIMIT_STORE_TOKEN=
+
+Add only the variables actually required by the implemented libraries and providers.
+
+For authentication, use the correct variable names expected by the selected library. If the library requires separate cookie, encryption, or email settings, document them.
+
+Never include real secrets in source code, generated files, GitHub commits, client bundles, or logs.
+
+Do not assume that placeholder values make production authentication or external services operational.
+
+31. TESTING
+
+Create automated unit and integration tests for:
+
+* Registration and authentication.
+* Password reset.
+* Role and permission enforcement.
+* Unauthorized access.
+* KYC submission and review.
+* Vendor approval.
+* Product approval.
+* Checkout calculations.
+* Manual payment submission.
+* Duplicate payment prevention.
+* Payment approval and rejection.
+* Order status transitions.
+* Fulfillment authorization.
+* Duplicate delivery prevention.
+* Promotion validation.
+* Refund authorization.
+* Commission calculations.
+* Settlement calculations.
+* Audit log creation.
+* File access authorization.
+
+Required security scenarios:
+
+1. Support Admin cannot approve payments without permission.
+2. Payment Admin cannot modify Super Admin permissions.
+3. Customers cannot view another customer’s private orders.
+4. Vendors cannot modify another vendor’s products or orders.
+5. Unpaid orders cannot be delivered through unauthorized actions.
+6. One payment cannot be improperly applied to multiple orders.
+7. Concurrent requests cannot fulfill the same order twice.
+8. Concurrent promotion redemption cannot exceed configured limits.
+9. Unauthorized users cannot retrieve private KYC files.
+10. Repeated requests cannot create duplicate financial ledger entries.
+
+Use realistic test fixtures separate from production data.
+
+Provide test commands and actual results when tests have been executed.
+
+Do not claim a test passed merely because the test file exists.
+
+32. DEVELOPMENT PHASES
+
+Implement every phase and maintain a checklist.
+
+Phase 1: Inspect project, configure architecture, branding, MongoDB connection, and authentication.
+
+Phase 2: Public storefront, categories, search, product pages, and customer dashboard.
+
+Phase 3: Vendor applications, vendor approval, vendor dashboard, and product submissions.
+
+Phase 4: Super Admin, custom roles, granular RBAC, and specialized administration panels.
+
+Phase 5: KYC submission, private storage, review workflow, and notifications.
+
+Phase 6: Checkout, manual payments, verification, and reconciliation.
+
+Phase 7: Orders, manual fulfillment, protected delivery records, and refunds.
+
+Phase 8: Promotions, digital code inventory, gaming products, subscriptions, and recharge.
+
+Phase 9: Commission rules, financial ledger, settlement management, and finance reports.
+
+Phase 10: Support tickets, audit logs, site settings, and security hardening.
+
+Phase 11: Automated testing, responsive design, bug fixes, and deployment documentation.
+
+Phase 12: Production build verification, deployment checklist, backup procedures, and final acceptance review.
+
+Do not declare the project complete after Phase 1 or after generating the frontend.
+
+33. GITHUB AND VERCEL DEPLOYMENT
+
+Prepare the application for a normal GitHub-to-Vercel deployment.
+
+GitHub Requirements
+
+* Generate the complete source repository.
+* Include a valid package.json.
+* Include a compatible lockfile.
+* Include TypeScript and Next.js configuration.
+* Include database models and all required server-side modules.
+* Include .gitignore.
+* Include .env.example without secrets.
+* Include README.md.
+* Include deployment and troubleshooting documentation.
+* Never commit .env files containing secrets.
+* Ensure no local absolute paths are required to build the application.
+
+Vercel Requirements
+
+* Use a compatible Next.js deployment configuration.
+* Ensure server-side API routes work in the Vercel environment.
+* Avoid unnecessary custom servers that conflict with normal Vercel deployment.
+* Avoid relying on permanent local files or process memory.
+* Ensure all persistent data uses MongoDB Atlas or the configured external storage.
+* Ensure environment variables are documented.
+* Ensure the production build command works.
+* Ensure Node.js and dependency versions are compatible with the selected deployment.
+* Do not require a permanently running custom Node.js server for ordinary application functionality.
+
+MongoDB Atlas Setup
+
+Document how to:
+
+1. Create a MongoDB Atlas project.
+2. Create a database cluster.
+3. Create a database user with an appropriate password.
+4. Configure appropriate network access.
+5. Obtain the connection string.
+6. Configure MONGODB_URI in local development.
+7. Configure MONGODB_URI in Vercel production settings.
+8. Test the database connection.
+9. Configure backups and recovery.
+10. Apply indexes and any required database initialization steps.
+
+Use the least-privileged practical database credentials.
+
+Do not recommend unrestricted database network access as a permanent production configuration.
+
+Deployment Workflow
+
+Document the complete process:
+
+1. Generate and review the source code in Google AI Studio.
+2. Export or synchronize the project to GitHub.
+3. Review and commit the source code.
+4. Create a Vercel project.
+5. Import the GitHub repository.
+6. Configure environment variables.
+7. Configure MongoDB Atlas and private file storage.
+8. Configure the production domain and HTTPS.
+9. Deploy.
+10. Check the production build and runtime logs.
+11. Verify authentication and database operations.
+12. Test the critical workflows.
+13. Confirm that sensitive files are not publicly accessible.
+
+Do not claim the website is deployed merely because deployment instructions were generated.
+
+34. SECURE SUPER ADMIN BOOTSTRAP
+
+Create a secure, documented process for creating the first Super Admin.
+
+Requirements:
+
+* Do not hardcode a default production password.
+* Do not automatically grant Super Admin privileges through public registration.
+* Do not expose a public endpoint that allows arbitrary Super Admin creation.
+* Use a protected server-side command or a one-time bootstrap process.
+* Require explicit initial credentials or a secure invitation.
+* Hash passwords using the selected authentication library.
+* Ensure the bootstrap process cannot create duplicate privileged accounts accidentally.
+* Prevent ordinary administrators from escalating their privileges.
+* Record bootstrap and subsequent permission changes in the audit log.
+* Document how to recover access securely if the primary administrator is locked out.
+
+35. REQUIRED DOCUMENTATION
+
+Generate:
+
+1. README.md.
+2. Installation instructions.
+3. Development run instructions.
+4. Environment variable documentation.
+5. MongoDB Atlas setup instructions.
+6. Database model documentation.
+7. Secure Super Admin creation instructions.
+8. Role and permission documentation.
+9. GitHub workflow instructions.
+10. Vercel deployment instructions.
+11. Private storage configuration.
+12. Email provider configuration.
+13. Testing instructions and results.
+14. Backup and restoration instructions.
+15. Security checklist.
+16. Future payment gateway integration guide.
+17. Known limitations.
+18. List of unfinished or unverified features.
+
+36. FINAL ACCEPTANCE CRITERIA
+
+The application is ready for review only when:
+
+* The storefront works on mobile and desktop.
+* Customers can register, authenticate, and manage their own accounts.
+* Vendors can apply and access approved selling features.
+* Vendor products require approval before publication.
+* Super Admin can create administrators and configure granular permissions.
+* Administrative permissions are enforced server-side.
+* KYC applications can be reviewed securely.
+* Sensitive documents are stored privately.
+* Manual payments can be submitted and reviewed.
+* Payment approval is required before normal fulfillment.
+* Order status transitions are validated.
+* Authorized staff can fulfill orders manually.
+* Duplicate payment and fulfillment protections are implemented.
+* Promotions are validated on the server.
+* Commissions and settlements use auditable financial records.
+* Refunds follow a controlled workflow.
+* Reports use real MongoDB data.
+* Audit logs are generated for critical actions.
+* Automated tests cover principal security and business workflows.
+* The production build is verified.
+* GitHub and Vercel setup documentation is complete.
+* MongoDB Atlas integration is functional when configured.
+* Missing credentials and external integrations are clearly identified.
+
+37. FINAL EXECUTION INSTRUCTIONS
+
+Start by inspecting the current project.
+
+Then build the entire application using the established project conventions or the technology stack specified above.
+
+The primary database must be MongoDB Atlas using Mongoose.
+
+The target hosting platform is Vercel, and the source repository is GitHub.
+
+Prioritize security, correct business logic, maintainability, and a professional user experience.
+
+Use reusable components, database-backed services, validated state transitions, atomic financial operations, server-side authorization, and complete documentation.
+
+Do not build a frontend-only prototype.
+
+Do not substitute mock data for production functionality.
+
+Do not fabricate successful payments, email delivery, KYC verification, or external API responses.
+
+If a required external service is not configured, implement the integration interface, document the missing configuration, and keep unrelated features functional.
+
+Implement the application in phases, continue until all specified modules have been addressed, run available tests, fix discovered errors, and report actual completion status.
+
+At the end, provide:
+
+* A complete source repository.
+* The list of implemented modules.
+* The MongoDB models and indexes.
+* The setup and deployment instructions.
+* The actual test results.
+* The required environment variables.
+* Any external service configuration still needed.
+* Any remaining limitations.
+
+The final objective is a functional, secure, mobile-friendly Nepal-focused multi-vendor digital marketplace using Next.js, TypeScript, MongoDB Atlas, Mongoose, GitHub, and Vercel, with NPR pricing, separate customer and vendor dashboards, Super Admin control, granular staff permissions, KYC, manual payments, manual fulfillment, refunds, commissions, settlements, reports, and a documented path to future payment gateway integration.

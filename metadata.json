@@ -1,0 +1,6 @@
+{
+  "name": "Mandala Digital Bazaar — Nepal Multi-Vendor Digital Marketplace",
+  "description": "Production-grade Multi-Vendor Digital Store & Marketplace for Nepal with NPR pricing, MongoDB & Mongoose ODM, granular 12-role RBAC, KYC verification, manual payment verification, manual fulfillment, promotions, financial ledger, and audit logging.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
